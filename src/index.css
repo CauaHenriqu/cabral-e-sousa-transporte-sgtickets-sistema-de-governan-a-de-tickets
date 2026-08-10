@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Color Palette - Cabral & Sousa Branding */
+    /* Primary: Vermelho Cabral & Sousa ~#ED1C24 → HSL 357 87% 53% */
+
+    --background: 0 10% 97%;
+    --foreground: 0 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 15% 15%;
+
+    /* Vermelho Cabral & Sousa */
+    --primary: 357 87% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Vermelho mais escuro */
+    --secondary: 357 70% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 8% 93%;
+    --muted-foreground: 0 8% 46%;
+
+    /* Accent - tom quente complementar */
+    --accent: 28 80% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 357 87% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success green */
+    --success: 160 50% 42%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning */
+    --warning: 40 85% 55%;
+    --warning-foreground: 30 60% 18%;
+
+    --border: 0 8% 89%;
+    --input: 0 8% 89%;
+    --ring: 357 87% 53%;
+
+    --radius: 1rem;
+
+    /* Sidebar - Vermelho vibrante Cabral & Sousa */
+    --sidebar-background: 3 98% 55%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 3 90% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 3 85% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 3 80% 62%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Chart Colors */
+    --chart-good: 160 50% 42%;
+    --chart-bad: 357 87% 53%;
+    --chart-neutral: 0 8% 65%;
+    --chart-accent: 28 80% 58%;
+    --chart-lavender: 357 45% 60%;
+    --chart-rose: 340 50% 62%;
+    --chart-peach: 20 75% 65%;
+    --chart-sage: 160 40% 52%;
+    --chart-wisteria: 220 45% 58%;
+
+    --font-heading: 'Comfortaa', sans-serif;
+    --font-body: 'Nunito', 'Comfortaa', sans-serif;
+
+    --gradient-primary: linear-gradient(135deg, hsl(357, 87%, 53%), hsl(357, 75%, 42%));
+    --gradient-secondary: linear-gradient(135deg, hsl(357, 70%, 42%), hsl(357, 55%, 35%));
+    --gradient-sidebar: linear-gradient(180deg, hsl(3, 98%, 55%), hsl(3, 92%, 48%));
+    --gradient-lavender: linear-gradient(135deg, hsl(357, 45%, 60%), hsl(357, 40%, 68%));
+    --gradient-rose: linear-gradient(135deg, hsl(340, 50%, 60%), hsl(350, 55%, 68%));
+    --gradient-sage: linear-gradient(135deg, hsl(160, 50%, 42%), hsl(160, 40%, 52%));
+    --gradient-peach: linear-gradient(135deg, hsl(28, 80%, 58%), hsl(20, 75%, 66%));
+
+    /* Chat bubbles - alto contraste e cores distintas por papel */
+    --chat-user: 210 90% 95%;
+    --chat-user-foreground: 214 60% 20%;
+    --chat-user-border: 210 70% 78%;
+    --chat-attendant: 160 45% 92%;
+    --chat-attendant-foreground: 165 55% 16%;
+    --chat-attendant-border: 160 40% 72%;
+    --chat-system: 0 8% 95%;
+    --chat-system-foreground: 0 15% 18%;
+    --chat-system-border: 0 8% 85%;
+
+    --shadow-sm: 0 1px 3px hsl(357 40% 25% / 0.06);
+
+    --shadow-md: 0 4px 16px hsl(357 40% 25% / 0.1);
+    --shadow-lg: 0 8px 32px hsl(357 40% 25% / 0.12);
+    --shadow-card: 0 2px 12px hsl(357 40% 25% / 0.06);
+    --shadow-glow-primary: 0 4px 20px hsl(357 87% 53% / 0.25);
+    --shadow-glow-success: 0 4px 20px hsl(160 50% 42% / 0.25);
+    --shadow-glow-accent: 0 4px 20px hsl(28 80% 58% / 0.25);
+    --shadow-glow-rose: 0 4px 20px hsl(340 50% 60% / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  .card-hover:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-sidebar {
+    background: var(--gradient-sidebar);
+  }
+
+  .chat-bubble-user {
+    @apply bg-chat-user text-chat-user-foreground border border-chat-user-border rounded-2xl rounded-bl-sm px-4 py-2;
+  }
+
+  .chat-bubble-system {
+    @apply bg-chat-system text-chat-system-foreground border border-chat-system-border rounded-2xl rounded-bl-sm px-4 py-2;
+  }
+
+  .chat-bubble-attendant {
+    @apply bg-chat-attendant text-chat-attendant-foreground border border-chat-attendant-border rounded-2xl rounded-br-sm px-4 py-2;
+  }
+
+
+  .metric-card {
+    @apply rounded-2xl p-6 bg-card border border-border;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+
+  .metric-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .status-active {
+    @apply bg-success/10 text-success px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .status-inactive {
+    @apply bg-destructive/10 text-destructive px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .status-open {
+    @apply bg-primary/10 text-primary px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .status-closed {
+    @apply bg-muted text-muted-foreground px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  /* Glass morphism utility */
+  .glass {
+    background: hsl(0 0% 100% / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
